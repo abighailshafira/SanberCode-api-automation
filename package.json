@@ -1,0 +1,22 @@
+{
+  "name": "sanbercode-api-automation",
+  "version": "1.0.0",
+  "description": "api automation script",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abighailshafira/SanberCode-api-automation.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "abighail",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abighailshafira/SanberCode-api-automation/issues"
+  },
+  "homepage": "https://github.com/abighailshafira/SanberCode-api-automation#readme"
+}
