@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/abighailshafira/SanberCode-api-automation/issues"
   },
-  "homepage": "https://github.com/abighailshafira/SanberCode-api-automation#readme"
+  "homepage": "https://github.com/abighailshafira/SanberCode-api-automation#readme",
+  "dependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.6.0",
+    "supertest": "^7.0.0"
+  }
 }
