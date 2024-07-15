@@ -1,0 +1,467 @@
+{
+  "stats": {
+    "suites": 7,
+    "tests": 13,
+    "passes": 13,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-07-15T04:28:52.073Z",
+    "end": "2024-07-15T04:28:56.276Z",
+    "duration": 4203,
+    "testsRegistered": 13,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "37948886-5780-421f-b395-fda5c59652de",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [
+        {
+          "title": "\"before all\" hook in \"{root}\"",
+          "fullTitle": "\"before all\" hook in \"{root}\"",
+          "timedOut": false,
+          "duration": 955,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "token = await getAuthToken();",
+          "err": {},
+          "uuid": "73b151eb-095b-4942-9288-bac1b5eb207d",
+          "parentUUID": "37948886-5780-421f-b395-fda5c59652de",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2b83ac94-4513-4ec9-8e47-4dc7871b0ef5",
+          "title": "Registration",
+          "fullFile": "C:\\Users\\Hp\\OneDrive\\Documents\\VSCode\\SanberCode-api-automation\\test.js",
+          "file": "\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully register",
+              "fullTitle": "Registration Successfully register",
+              "timedOut": false,
+              "duration": 481,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = {\n  name: \"toko-tiki\",\n  email: \"tokotiki@gmail.com\",\n  password: \"password\",\n};\nconst response = await request(baseUrl).post(\"/registration\").send(payload);\n// Assertion\nexpect((await response).status).to.equal(201);\nexpect((await response).body.status).to.equal(\"success\");\nexpect((await response).body.message).to.equal(\"Toko berhasil didaftarkan\");\nexpect((await response).body.data).to.have.property(\"name\", \"toko-tiki\");\nexpect((await response).body.data).to.have.property(\"email\", \"tokotiki@gmail.com\");\n// console.log(response.body);",
+              "err": {},
+              "uuid": "3dd38888-c53f-467b-ac2b-a49f68caa3ed",
+              "parentUUID": "2b83ac94-4513-4ec9-8e47-4dc7871b0ef5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Fail to register with invalid email",
+              "fullTitle": "Registration Fail to register with invalid email",
+              "timedOut": false,
+              "duration": 178,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = {\n  name: \"toko-tiki\",\n  email: \"invalidemail\",\n  password: \"password123!\",\n};\nconst response = await request(baseUrl).post(\"/registration\").send(payload);\n// Assertion\nexpect((await response).status).to.equal(400);\nexpect((await response).body.status).to.equal(\"fail\");\nexpect((await response).body.message).to.equal('\"email\" must be a valid email');",
+              "err": {},
+              "uuid": "ac63509c-d8cd-4a63-be7b-1e8bccee67b9",
+              "parentUUID": "2b83ac94-4513-4ec9-8e47-4dc7871b0ef5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "3dd38888-c53f-467b-ac2b-a49f68caa3ed",
+            "ac63509c-d8cd-4a63-be7b-1e8bccee67b9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 659,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "95535c18-de14-4d55-8a5a-8c1200b38155",
+          "title": "Login",
+          "fullFile": "C:\\Users\\Hp\\OneDrive\\Documents\\VSCode\\SanberCode-api-automation\\test.js",
+          "file": "\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully login",
+              "fullTitle": "Login Successfully login",
+              "timedOut": false,
+              "duration": 658,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = {\n  email: \"tokotiki@gmail.com\",\n  password: \"password\",\n};\nconst response = await request(baseUrl).post(\"/authentications\").send(payload);\n// Assertion\nexpect((await response).status).to.equal(201);\nexpect((await response).body.status).to.equal(\"success\");\nexpect((await response).body.message).to.equal(\"Authentication berhasil ditambahkan\");\nexpect((await response).body.data)\n  .to.have.property(\"accessToken\")\n  .to.be.a(\"string\");\nexpect((await response).body.data)\n  .to.have.property(\"refreshToken\")\n  .to.be.a(\"string\");",
+              "err": {},
+              "uuid": "fbb8cc5b-26db-4502-ae1a-e8f9fa3e5eb6",
+              "parentUUID": "95535c18-de14-4d55-8a5a-8c1200b38155",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Fail to register with unregistered email",
+              "fullTitle": "Login Fail to register with unregistered email",
+              "timedOut": false,
+              "duration": 487,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = {\n  email: \"unregistered@gmail.com\",\n  password: \"password\",\n};\nconst response = await request(baseUrl).post(\"/authentications\").send(payload);\n// Assertion\nexpect((await response).status).to.equal(401);\nexpect((await response).body.status).to.equal(\"fail\");\nexpect((await response).body.message).to.equal(\"Kredensial yang Anda berikan salah\");",
+              "err": {},
+              "uuid": "2df5fe3a-509c-47a7-88d2-5bf9f1b65832",
+              "parentUUID": "95535c18-de14-4d55-8a5a-8c1200b38155",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "fbb8cc5b-26db-4502-ae1a-e8f9fa3e5eb6",
+            "2df5fe3a-509c-47a7-88d2-5bf9f1b65832"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1145,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "987ca079-66b2-4f16-ab72-39a905839650",
+          "title": "Create User",
+          "fullFile": "C:\\Users\\Hp\\OneDrive\\Documents\\VSCode\\SanberCode-api-automation\\test.js",
+          "file": "\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully create user",
+              "fullTitle": "Create User Successfully create user",
+              "timedOut": false,
+              "duration": 466,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = {\n  name: \"kasir-tokotiki\",\n  email: \"kasirtokotiki@gmail.com\",\n  password: \"password\",\n};\nconst response = await request(baseUrl)\n  .post(\"/users\") // Endpoint\n  .send(payload) // Request body\n  .set(\"Authorization\", `Bearer ${token}`); // Header\n// Assertions\nexpect((await response).status).to.equal(201);\nexpect((await response).body.status).to.equal(\"success\");\nexpect((await response).body.message).to.equal(\"User berhasil ditambahkan\");\nexpect((await response).body.data).to.be.an(\"object\");\nexpect((await response).body.data)\n  .to.have.property(\"userId\")\n  .to.be.a(\"string\");\nexpect((await response).body.data).to.have.property(\"name\", \"kasir-tokotiki\");\nuserId = response.body.data.userId;",
+              "err": {},
+              "uuid": "5ca66cb0-2b41-4e70-b4f3-47c058f61e72",
+              "parentUUID": "987ca079-66b2-4f16-ab72-39a905839650",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Fail to create user with empty field",
+              "fullTitle": "Create User Fail to create user with empty field",
+              "timedOut": false,
+              "duration": 108,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = {\n  name: \"\",\n  email: \"kasirtokotiki@gmail.com\",\n  password: \"password\",\n};\nconst response = await request(baseUrl)\n  .post(\"/users\") // Endpoint\n  .send(payload) // Request body\n  .set(\"Authorization\", `Bearer ${token}`); // Header\n// Assertions\nexpect((await response).status).to.equal(400);\nexpect((await response).body.status).to.equal(\"fail\");\nexpect((await response).body.message).to.equal('\"name\" is not allowed to be empty');",
+              "err": {},
+              "uuid": "db0ca6cf-6a18-41d1-8fa0-84b0480668d9",
+              "parentUUID": "987ca079-66b2-4f16-ab72-39a905839650",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5ca66cb0-2b41-4e70-b4f3-47c058f61e72",
+            "db0ca6cf-6a18-41d1-8fa0-84b0480668d9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 574,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "af554332-eaea-4d85-9a6d-a18d64430ab2",
+          "title": "Get User Detail",
+          "fullFile": "C:\\Users\\Hp\\OneDrive\\Documents\\VSCode\\SanberCode-api-automation\\test.js",
+          "file": "\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully get user detail",
+              "fullTitle": "Get User Detail Successfully get user detail",
+              "timedOut": false,
+              "duration": 108,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(baseUrl)\n  .get(`/users/${userId}`) // Endpoint\n  .set(\"Content-Type\", \"application/json\") // Header\n  .set(\"Authorization\", `Bearer ${token}`); // Header\n// Assertions\nexpect((await response).status).to.equal(200);\nexpect((await response).body.status).to.equal(\"success\");\nexpect((await response).body.data).to.have.property(\"user\");\nexpect((await response).body.data.user)\n  .to.have.property(\"id\")\n  .to.be.a(\"string\");\nexpect((await response).body.data.user).to.have.property(\"name\", \"kasir-tokotiki\");\nexpect((await response).body.data.user).to.have.property(\"email\", \"kasirtokotiki@gmail.com\");\nexpect((await response).body.data.user).to.have.property(\"role\", \"kasir\");",
+              "err": {},
+              "uuid": "c143dfa2-c9d3-4af3-8dbd-e1d7bbfcc478",
+              "parentUUID": "af554332-eaea-4d85-9a6d-a18d64430ab2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Fail to create user with invalid user ID",
+              "fullTitle": "Get User Detail Fail to create user with invalid user ID",
+              "timedOut": false,
+              "duration": 107,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const invalidUserId = \"invaliduserid\";\nconst response = await request(baseUrl)\n  .get(`/users/${invalidUserId}`) // Endpoint\n  .set(\"Content-Type\", \"application/json\") // Header\n  .set(\"Authorization\", `Bearer ${token}`); // Header\n// Assertions\nexpect((await response).status).to.equal(404);\nexpect((await response).body.status).to.equal(\"fail\");\nexpect((await response).body.message).to.equal(\"id tidak valid\");",
+              "err": {},
+              "uuid": "918135f2-2865-42e0-a1d7-7fc6e7cfad97",
+              "parentUUID": "af554332-eaea-4d85-9a6d-a18d64430ab2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c143dfa2-c9d3-4af3-8dbd-e1d7bbfcc478",
+            "918135f2-2865-42e0-a1d7-7fc6e7cfad97"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 215,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "e9d88065-c6a5-4979-8ac0-1f707635a7e4",
+          "title": "Get User List",
+          "fullFile": "C:\\Users\\Hp\\OneDrive\\Documents\\VSCode\\SanberCode-api-automation\\test.js",
+          "file": "\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully get users",
+              "fullTitle": "Get User List Successfully get users",
+              "timedOut": false,
+              "duration": 193,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(baseUrl)\n  .get(\"/users\") // Endpoint\n  .set(\"Authorization\", `Bearer ${token}`) // Header\n  .query({ q: \"kasir tokotiki\", p: 1 }); // Query params\n// Assertions\nexpect((await response).status).to.equal(200);\nexpect((await response).body.status).to.equal(\"success\");\nexpect((await response).body.data)\n  .to.have.property(\"users\")\n  .to.be.an(\"array\");\n(await response).body.data.users.forEach((user) => {\n  expect(user).to.have.property(\"id\").to.be.a(\"string\");\n  expect(user).to.have.property(\"name\").to.be.a(\"string\");\n  expect(user).to.have.property(\"email\").to.be.a(\"string\");\n  expect(user).to.have.property(\"role\").to.be.a(\"string\");\n});",
+              "err": {},
+              "uuid": "f8e506be-8fbd-42a5-ad63-972c015f1770",
+              "parentUUID": "e9d88065-c6a5-4979-8ac0-1f707635a7e4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f8e506be-8fbd-42a5-ad63-972c015f1770"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 193,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "f18fe7c2-8adf-44c7-a1df-cc34086d5823",
+          "title": "Update User",
+          "fullFile": "C:\\Users\\Hp\\OneDrive\\Documents\\VSCode\\SanberCode-api-automation\\test.js",
+          "file": "\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully update user",
+              "fullTitle": "Update User Successfully update user",
+              "timedOut": false,
+              "duration": 102,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = {\n  name: \"kasir-tokotuku\",\n  email: \"kasirtokotuku@gmail.com\",\n};\nconst response = await request(baseUrl)\n  .put(`/users/${userId}`) // Endpoint\n  .send(payload) // Request body\n  .set(\"Authorization\", `Bearer ${token}`); // Header\n// Assertions\nexpect((await response).status).to.equal(200);\nexpect((await response).body.status).to.equal(\"success\");\nexpect((await response).body.message).to.equal(\"User berhasil diupdate\");\nexpect((await response).body.data).to.have.property(\"name\", \"kasir-tokotuku\");",
+              "err": {},
+              "uuid": "8f745d07-2f4b-4ac0-82b3-5802c1b719ff",
+              "parentUUID": "f18fe7c2-8adf-44c7-a1df-cc34086d5823",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Fail to update user with invalid user ID",
+              "fullTitle": "Update User Fail to update user with invalid user ID",
+              "timedOut": false,
+              "duration": 110,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const invalidUserId = \"invaliduserid\";\nconst payload = {\n  name: \"kasir-tokotuku\",\n  email: \"kasirtokotuku@gmail.com\",\n};\nconst response = await request(baseUrl)\n  .put(`/users/${invalidUserId}`) // Endpoint\n  .send(payload) // Request body\n  .set(\"Authorization\", `Bearer ${token}`); // Header\n// Assertions\nexpect((await response).status).to.equal(404);\nexpect((await response).body.status).to.equal(\"fail\");\nexpect((await response).body.message).to.equal(\"id tidak valid\");",
+              "err": {},
+              "uuid": "9205a3c4-d466-4275-b83a-54859efd838e",
+              "parentUUID": "f18fe7c2-8adf-44c7-a1df-cc34086d5823",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8f745d07-2f4b-4ac0-82b3-5802c1b719ff",
+            "9205a3c4-d466-4275-b83a-54859efd838e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 212,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "03c9a7ef-6358-4b01-bc64-1abe0d8aed59",
+          "title": "Delete User",
+          "fullFile": "C:\\Users\\Hp\\OneDrive\\Documents\\VSCode\\SanberCode-api-automation\\test.js",
+          "file": "\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully delete user",
+              "fullTitle": "Delete User Successfully delete user",
+              "timedOut": false,
+              "duration": 106,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(baseUrl)\n  .delete(`/users/${userId}`) // Endpoint\n  .set(\"Authorization\", `Bearer ${token}`); // Header\n// Assertions\nexpect((await response).status).to.equal(200);\nexpect((await response).body.status).to.equal(\"success\");\nexpect((await response).body.message).to.equal(\"User berhasil dihapus\");",
+              "err": {},
+              "uuid": "e2c70010-b412-4b14-ade3-09e59cef79b7",
+              "parentUUID": "03c9a7ef-6358-4b01-bc64-1abe0d8aed59",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Fail to delete user with invalid user ID",
+              "fullTitle": "Delete User Fail to delete user with invalid user ID",
+              "timedOut": false,
+              "duration": 109,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const invalidUserId = \"invaliduserid\";\nconst response = await request(baseUrl)\n  .delete(`/users/${invalidUserId}`) // Endpoint\n  .set(\"Authorization\", `Bearer ${token}`); // Header\n// Assertions\nexpect((await response).status).to.equal(404);\nexpect((await response).body.status).to.equal(\"fail\");\nexpect((await response).body.message).to.equal(\"id tidak valid\");",
+              "err": {},
+              "uuid": "ca246e79-47f8-439b-be9a-950dd481e35f",
+              "parentUUID": "03c9a7ef-6358-4b01-bc64-1abe0d8aed59",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e2c70010-b412-4b14-ade3-09e59cef79b7",
+            "ca246e79-47f8-439b-be9a-950dd481e35f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 215,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.6.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
